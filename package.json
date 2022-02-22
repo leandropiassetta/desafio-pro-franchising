@@ -1,0 +1,28 @@
+{
+  "name": "desafio-pro-franchising",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandropiassetta/desafio-pro-franchising.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leandropiassetta/desafio-pro-franchising/issues"
+  },
+  "homepage": "https://github.com/leandropiassetta/desafio-pro-franchising#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.3",
+    "jest": "^27.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.4.0",
+    "multer": "^1.4.4"
+  }
+}
