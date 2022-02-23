@@ -8,11 +8,11 @@ const getAllClients = async () => {
   return clients;
 };
 
-// const getById = async (id) => {
-//   const db = await connect();
-//   const recipe = await db.collection('recipes').findOne({ _id: ObjectId(id) });
-//   return recipe;
-// };
+const getClientById = async (id) => {
+  const db = await connect();
+  const client = await db.collection('clients').findOne({ _id: ObjectId(id) });
+  return client;
+};
 
 const createClient = async({ name, email, password, phoneNumber, role = 'client' }) => {
   const db = await connect();
@@ -23,7 +23,6 @@ const createClient = async({ name, email, password, phoneNumber, role = 'client'
   return { 
     _id: newClient.insertedId, name, email, password, phoneNumber, role
   }
-
 }
 
 const getClientByEmail = async (email) => {
@@ -56,7 +55,7 @@ const editClient = async ({ id, name, email, password, phoneNumber, role }) => {
 module.exports = {
   createClient,
   getAllClients,
-  // getById,
+  getClientById,
   getClientByEmail,
   editClient,
   // deleteClient,

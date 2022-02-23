@@ -1,9 +1,17 @@
 const serviceClient = require('../services/clientServices');
 
 const getAllClients = async(_req, res) => {
-  const clients = await serviceClient.getAllClients()
+  const clients = await serviceClient.getAllClients();
 
-  return res.status(200).json(clients)
+  return res.status(200).json(clients);
+}
+
+const getClientById = async(req, res) => {
+  const { id } = req.params;
+
+  const client = await serviceClient.getClientById(id);
+
+  return res.status(200).json(client);
 }
 
 const createClient = async(req, res) => {
@@ -27,5 +35,6 @@ const editClient = async (req, res) => {
 module.exports = {
   createClient,
   getAllClients,
+  getClientById,
   editClient
 }
