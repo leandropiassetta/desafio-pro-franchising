@@ -127,7 +127,7 @@ SECRET= Escolha uma palavra qualquer para essa variável de ambiente
 Ainda Entre na pasta  
   
 ```  
-cd desafio-pro-franshising
+cd desafio-pro-franchising
   
 ```  
   
