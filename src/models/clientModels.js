@@ -1,4 +1,5 @@
 const connect = require('./connection');
+const { createToken } = require('../api/auth/jwt');
 const { ObjectId } = require('mongodb');
 
 // const getAll = async () => {
@@ -20,8 +21,10 @@ const createClient = async({ name, email, password, phoneNumber, role }) => {
     name, email, password, phoneNumber, role
   });
 
+  const tokenId = createToken({ id: newClient.insertedId, email  });
+
   return { 
-    _id: newClient.insertedId, name, email, password, role 
+    _id: newClient.insertedId, name, email, password, phoneNumber, role, token: tokenId
 }
 }
 
