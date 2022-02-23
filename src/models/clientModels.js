@@ -1,5 +1,4 @@
 const connect = require('./connection');
-const { createToken } = require('../api/auth/jwt');
 const { ObjectId } = require('mongodb');
 
 const getAllClients = async () => {
@@ -15,19 +14,24 @@ const getAllClients = async () => {
 //   return recipe;
 // };
 
-const createClient = async({ name, email, password, phoneNumber, role }) => {
+const createClient = async({ name, email, password, phoneNumber, role = 'client' }) => {
   const db = await connect();
   const newClient = await db.collection('clients').insertOne({
     name, email, password, phoneNumber, role
   });
 
-  const tokenId = createToken({ id: newClient.insertedId, email  });
-
   return { 
-    _id: newClient.insertedId, name, email, password, phoneNumber, role, token: tokenId
+    _id: newClient.insertedId, name, email, password, phoneNumber, role
   }
 
 }
+
+const getClientByEmail = async (email) => {
+  const db = await connect();
+  const client = db.collection('clients').findOne({ email });
+
+  return client;
+};
 
 
 // const editRecipe = async ({ id, ingredients, preparation, name }, payload) => {
@@ -52,6 +56,7 @@ const createClient = async({ name, email, password, phoneNumber, role }) => {
 module.exports = {
   createClient,
   getAllClients,
+  getClientByEmail
   // getById,
   // editClient,
   // deleteClient,
