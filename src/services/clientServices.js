@@ -22,6 +22,13 @@ const getClientById = async (id) => {
 };
 
 const createClient = async(data) => {
+
+  const emailClient = await clientModels.getClientByEmail(data.email);
+
+  if(emailClient) {
+    return { message: 'Email já existe!!' }
+  }
+
   const registerClient = await clientModels.createClient(data);
 
   return registerClient;

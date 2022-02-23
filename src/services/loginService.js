@@ -1,6 +1,6 @@
 const clientModel = require('../models/clientModels');
 const { createToken } = require('../api/auth/jwt');
-
+const bcrypt = require('bcrypt');
 
 const clientLogin = async(email, password) => {
 
@@ -8,17 +8,19 @@ const clientLogin = async(email, password) => {
     return { message: 'Os campos precisam ser preenchido' }
   }
 
-  const verifyUser = await clientModel.getClientByEmail(email);
+  const verifyClient = await clientModel.getClientByEmail(email);
+  const { password: hash } = verifyClient;
+  const cryptPassword = await bcrypt.compare(password, hash);
 
-  if(!verifyUser) {
+  if(!verifyClient || !cryptPassword) {
     return { message: 'Usuário ou senha inválida' }
   }
 
-  else if(verifyUser.password === password) {
-    const { _id: id } = verifyUser;
+  else if(cryptPassword) {
+    const { _id: id } = verifyClient;
 
     const token = createToken({
-      id, email: verifyUser.email, role: verifyUser.role
+      id, email: verifyClient.email, role: verifyClient.role
     });
 
     return token

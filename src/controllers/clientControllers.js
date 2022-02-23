@@ -19,6 +19,10 @@ const createClient = async(req, res) => {
 
   const newClient = await serviceClient.createClient(dataClient);
 
+  if(newClient.message) {
+    return res.status(409).json(newClient)
+  }
+
   return res.status(201).json({ message: 'Cliente criado com sucesso!!', newClient });
 }
 
@@ -40,7 +44,7 @@ const deleteClient = async (req, res) => {
   }
 
   if(client) {
-    return res.status(202).json(client);
+    return res.status(200).json(client);
   }
 };
 

@@ -1,5 +1,6 @@
 const connect = require('./connection');
 const { ObjectId } = require('mongodb');
+const bcrypt = require('bcrypt');
 
 const getAllClients = async () => {
   const db = await connect();
@@ -16,8 +17,11 @@ const getClientById = async (id) => {
 
 const createClient = async({ name, email, password, phoneNumber, role = 'client' }) => {
   const db = await connect();
+
+  const hash = bcrypt.hashSync(password, 12);
+
   const newClient = await db.collection('clients').insertOne({
-    name, email, password, phoneNumber, role
+    name, email, password: hash, phoneNumber, role
   });
 
   return { 
