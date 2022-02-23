@@ -2,12 +2,12 @@ const connect = require('./connection');
 const { createToken } = require('../api/auth/jwt');
 const { ObjectId } = require('mongodb');
 
-// const getAll = async () => {
-//   const db = await connect();
-//   const recipes = await db.collection('recipes').find().toArray();
+const getAllClients = async () => {
+  const db = await connect();
+  const clients = await db.collection('clients').find().toArray();
 
-//   return recipes;
-// };
+  return clients;
+};
 
 // const getById = async (id) => {
 //   const db = await connect();
@@ -51,7 +51,7 @@ const createClient = async({ name, email, password, phoneNumber, role }) => {
 
 module.exports = {
   createClient,
-  // getAll,
+  getAllClients,
   // getById,
   // editClient,
   // deleteClient,
