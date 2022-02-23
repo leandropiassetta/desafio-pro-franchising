@@ -12,7 +12,14 @@ const createClient = async(data) => {
   return registerClient;
 }
 
+const editClient = async ({ id, name, email, password, phoneNumber, role }) => {
+  const client = await clientModels.editClient({ id, name, email, password, phoneNumber, role });
+
+  return client;
+};
+
 module.exports = {
   createClient,
-  getAllClients
+  getAllClients,
+  editClient
 }
