@@ -25,8 +25,10 @@ const createClient = async({ name, email, password, phoneNumber, role }) => {
 
   return { 
     _id: newClient.insertedId, name, email, password, phoneNumber, role, token: tokenId
+  }
+
 }
-}
+
 
 // const editRecipe = async ({ id, ingredients, preparation, name }, payload) => {
 //   const db = await connect();

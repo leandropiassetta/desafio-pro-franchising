@@ -8,7 +8,7 @@ const validateToken = (req, res, next) => {
 
   try {
     const dataUser = verifyToken(authorization);
-    req.user = dataUser;
+    req.client = dataUser;
   } catch ({ error: message }) {
     return res.status(401).json({ message: 'Expirado ou Token inválido' });
   }
