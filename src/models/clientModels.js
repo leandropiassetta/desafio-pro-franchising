@@ -32,7 +32,6 @@ const getClientByEmail = async (email) => {
   return client;
 };
 
-
 const editClient = async ({ id, name, email, password, phoneNumber, role }) => {
   const db = await connect();
   await db.collection('clients').updateOne({ 
@@ -41,16 +40,10 @@ const editClient = async ({ id, name, email, password, phoneNumber, role }) => {
   return { _id: id, name, email, password, phoneNumber, role };
 };
 
-// const deleteRecipe = async (id) => {
-//   const db = await connect();
-//   await db.collection('recipes').deleteOne({ _id: ObjectId(id) });
-// };
-
-// const addImage = async (id, image) => {
-//   const db = await connect();
-//   await db.collection('recipes').updateOne({
-//     _id: ObjectId(id) }, { $set: { image } });
-// };
+const deleteClient = async (id) => {
+  const db = await connect();
+  await db.collection('clients').deleteOne({ _id: ObjectId(id) });
+};
 
 module.exports = {
   createClient,
@@ -58,6 +51,5 @@ module.exports = {
   getClientById,
   getClientByEmail,
   editClient,
-  // deleteClient,
-  // addImage,
+  deleteClient,
 };

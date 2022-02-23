@@ -4,7 +4,8 @@ const {
   createClient, 
   getAllClients, 
   editClient, 
-  getClientById 
+  getClientById,
+  deleteClient
 } = require('../controllers/clientControllers');
 
 const { validateSchema } = require('../middlewares/validateSchema');
@@ -17,7 +18,8 @@ const router = express;
 router.get('/', getAllClients);
 router.get('/:id', getClientById);
 router.post('/', validateSchema(clientSchema), createClient);
-router.put('/edit/:id', validateSchema(putSchema), editClient);
+router.put('/:id', validateSchema(putSchema), editClient);
+router.delete('/:id', deleteClient);
 
 
 module.exports = router

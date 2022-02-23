@@ -1,4 +1,5 @@
 const clientModels = require('../models/clientModels');
+const { ObjectId } = require('mongodb');
 
 const getAllClients = async() => {
   const clients = await clientModels.getAllClients();
@@ -32,9 +33,24 @@ const editClient = async ({ id, name, email, password, phoneNumber, role }) => {
   return client;
 };
 
+const deleteClient = async (id) => {
+  const clientUserById = await clientModels.getClientById(id);
+  
+  if(!clientUserById) {
+    return { error: 'Cliente não encotrado!!' };
+  }
+
+  if (clientUserById) {
+    await clientModels.deleteClient(id);
+  
+    return { message: 'Cliente deletado com sucesso!!' };
+  }
+};
+
 module.exports = {
   createClient,
   getClientById,
   getAllClients,
-  editClient
+  editClient,
+  deleteClient
 }

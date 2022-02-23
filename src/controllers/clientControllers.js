@@ -22,7 +22,6 @@ const createClient = async(req, res) => {
   return res.status(201).json({ message: 'Cliente criado com sucesso!!', newClient });
 }
 
-
 const editClient = async (req, res) => {
   const { id } = req.params;
   const { name, email, password, phoneNumber, role } = req.body;
@@ -32,9 +31,23 @@ const editClient = async (req, res) => {
   return res.status(202).json({ message: 'Cliente editado com sucesso!!', client });
 };
 
+const deleteClient = async (req, res) => {
+  const { id } = req.params;
+  const client = await serviceClient.deleteClient(id);
+
+  if(client.error) {
+    return res.status(404).json(client);
+  }
+
+  if(client) {
+    return res.status(202).json(client);
+  }
+};
+
 module.exports = {
   createClient,
   getAllClients,
   getClientById,
-  editClient
+  editClient,
+  deleteClient,
 }
