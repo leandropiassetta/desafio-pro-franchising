@@ -14,8 +14,6 @@
 - [Tecnologias envolvidas](#tecnologias-envolvidas)
 - [Requisitos do desafio](#requisitos-do-desafio)
 - [Requisitos desenvolvidos](#requisitos-desenvolvidos)
-- [Demonstração](#demonstracao)
-- [Referencias](#referencias)
 - [Instalação e uso](#instalação-e-uso)
 
 ---
@@ -106,12 +104,9 @@ Abra o terminal de sua máquina
 >  - **Windows**: Tecla do Windows + R
 
 e digite o comando abaixo para clonar o projeto.  
-  
-```  
-git clone git@github.com:leandropiassetta/desafio-pro-franchising.git
-   
-```  
-  
+
+  `git clone git@github.com:leandropiassetta/desafio-pro-franchising.git`
+
 ### Configurando a variável de ambiente
 
 crie um arquivo `.env` e coloque os valores de acordo com a configuração do seu banco de dados
@@ -132,19 +127,13 @@ cd desafio-pro-franchising
 ```  
   
 ### Instalando as dependências  
+   
+`npm install`
   
-```  
-npm install  
-  
-```  
-
 
 ### Executando o projeto  
-  
-```  
-npm start  
-ou
-npm run dev
-  
-``` 
 
+`npm start`
+**ou**
+`npm run dev`
+  
