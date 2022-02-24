@@ -120,20 +120,15 @@ SECRET= Escolha uma palavra qualquer para essa variável de ambiente
 ```
 
 Ainda Entre na pasta  
-  
-```  
-cd desafio-pro-franchising
-  
-```  
-  
-### Instalando as dependências  
-   
-`npm install`
-  
 
-### Executando o projeto  
+`cd desafio-pro-franchising`
+
+Instalando as dependências  
+ 
+`npm install`
+
+Executando o projeto  
 
 `npm start`
 **ou**
 `npm run dev`
-  
