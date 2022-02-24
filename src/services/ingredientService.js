@@ -1,14 +1,14 @@
-const clientModels = require('../models/clientModels');
+// const ingredientModels = require('../models/clientIngredient');
 
-const createIngredients = async({ name, unitOfMeasurement, price  }) => {
+// const createIngredients = async({ name, unitOfMeasurement, price  }) => {
 
-}
+// }
 
-const createProducts = async({ name, image, price, ingredients }) => {
+// const createProducts = async({ name, image, price, ingredients }) => {
 
-}
+// }
 
-module.exports = {
-  createIngredients,
-  createProducts
-}
+// module.exports = {
+//   createIngredients,
+//   createProducts
+// }
